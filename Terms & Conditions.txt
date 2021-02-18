@@ -1,0 +1,20 @@
+﻿Terms & Conditions
+
+
+The following Terms & Conditions are between the individual requesting permission to use the Dataset (hereafter referred as “you”)  and Coveo Solutions Inc. (hereafter referred as ”Coveo”). By using the Dataset, you agree to be bound by and adhere to these Terms & Conditions, as may be amended from time to time by Coveo at its sole discretion. If you are agreeing to these Terms & Conditions not as an individual but on behalf of a legal entity, then “you” or “your” shall refer to such entity, and you represent that you have the authority to bind such entity and you are binding your entity to these Terms & Conditions. 
+
+
+1. Permitted Use. You will use the Dataset only for non-commercial research and educational purposes.
+2. Prohibited use. You will not use the Dataset for any other purpose and/or in any other manner than as expressly provided herein, nor attempt to reverse engineer or de-anonymise the Dataset by explicitly or implicitly linking the data to any person or entity. Furthermore, you will not use the Dataset in a manner that falsifies or misrepresents its content.
+3. Retained Rights. Any rights in the Dataset remains vested in Coveo, and Coveo retains all rights not specifically granted hereunder.
+4. Disclaimer of Warranty. Coveo makes no representations or warranties of any kind regarding the Dataset, either expressed or implied, including but not limited to warranties of non-infringement or fitness for a particular purpose. 
+5. Redistribution. You will not distribute copies of the Dataset and/or data contained therein to any third party, which includes but is not limited to your research associates and colleagues. 
+6. Attribution. You will give attribution to Coveo in any publication, project or presentation based on this Dataset. This must be done following standard academic and scientific practices and may not in any way suggest any endorsement,  unless explicitly provided to you by Coveo.
+7. Trademarks. Coveo does not grant you permission to use the trade names, trademarks, service marks, or product names of Coveo, except as required for reasonable and customary use in describing the origin of the Dataset. 
+8. Modification/discontinuation of Dataset. Coveo reserves the right at any time to modify or discontinue, temporarily or permanently, the Dataset and any means of accessing or utilizing the Dataset. 
+9. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall Coveo be liable to you for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of these Terms & Conditions or out of the use or inability to use the Dataset. 
+10. Indemnity. You will defend, indemnify and hold harmless Coveo, for any liability incurred by, or claims asserted against Coveo, arising from your use of the Dataset.
+11. Entire Agreement. These Terms & Conditions constitute the entire agreement between you and Coveo with respect to its subject matter. Coveo  may amend these Terms & Conditions from time to time at its sole discretion.
+12. Dispute resolution. Any dispute relating to these Terms & Conditions shall be governed by Quebec law.
+
+END OF TERMS AND CONDITIONS
