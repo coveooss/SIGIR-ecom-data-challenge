@@ -2,7 +2,9 @@
 _Public Data Release 1.0.0_
 
 ### Overview
-WIP
+Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility scripts and information about data preparation and testing for the Challenge.
+
+This page is a WIP - please come back often in the upcoming weeks to check for updates and for the final dataset.
 
 ### License
 
@@ -23,11 +25,11 @@ The authors of the paper are:
 * [Ciro Greco](https://www.linkedin.com/in/cirogreco/) - Coveo AI Labs
 * [Jean-Francis Roy](https://www.linkedin.com/in/jeanfrancisroy/) - Coveo
 * [Federico Bianchi](https://www.linkedin.com/in/federico-bianchi-3b7998121/) - Postdoctoral Researcher at Università Bocconi
-* [Giovanni Cassani](https://giovannicassani.github.io/) - Coveo
+* [Giovanni Cassani](https://giovannicassani.github.io/) - Tillburg University
+* [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
 
-The authors wish to thank Richard Tessier and Coveo's legal team for supporting our research and believing in 
-this data sharing initiative; special thanks to [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) and 
-[Luca Bigon](https://www.linkedin.com/in/bigluck/) for help in data collection and preparation.
+The authors wish to thank [Richard Tessier](https://www.linkedin.com/in/richardtessier/) and Coveo's legal team for supporting our research and believing in 
+this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
 
 ### How to Cite our Work
 
