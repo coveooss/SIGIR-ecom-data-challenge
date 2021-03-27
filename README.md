@@ -1,12 +1,12 @@
-# SIGIR eCOM 2021 Data Challange Dataset
+# SIGIR eCOM 2021 Data Challenge Dataset
 _Public Data Release 1.0.0_
 
 ### Overview
 Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility 
 scripts and information about data preparation and testing for the Challenge.
 
-Since the dataset is released to the community for research use even outside the Data Challenge, you can skip all the
-details about evaluation in this README and focus only on the dataset features.
+Since the dataset is released to the community for research use even outside of the Data Challenge, if you are using the dataset for independent reserach you can skip the
+details about evaluation in this README.
 
 This page is a WIP - please come back often in the upcoming weeks to check for updates and for the final dataset.
 
@@ -83,7 +83,7 @@ image_vector| vector | A dense representation of image meta-data, obtained throu
 
 Download the `zip` folder and unzip it in your local machine. To verify that all is well, you can run the simple
 `start/dataset_stats.py` script in the folder: the script will parse the three files, show some sample rows and 
-and print out some basic stats and counts (if you don't modify the three paths, it will run on the sample `csv`).
+print out some basic stats and counts (if you don't modify the three paths, it will run on the sample `csv`).
 
 Please remember that usage of this dataset implies acceptance of the  Terms And Conditions: you agree to 
 not use the dataset for any other purpose  than what is stated in the Terms and Conditions, 
