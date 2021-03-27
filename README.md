@@ -2,15 +2,123 @@
 _Public Data Release 1.0.0_
 
 ### Overview
-Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility scripts and information about data preparation and testing for the Challenge.
+Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility 
+scripts and information about data preparation and testing for the Challenge.
+
+Since the dataset is released to the community for research use even outside the Data Challenge, you can skip all the
+details about evaluation in this README and focus only on the dataset features.
 
 This page is a WIP - please come back often in the upcoming weeks to check for updates and for the final dataset.
 
 ### License
 
-The dataset is available for research and educational purposes at this page. To obtain the dataset, you are required to fill a form with information about you and your institution, and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: usage of the data implies the acceptance of these Terms And Conditions. 
+The dataset is available for research and educational purposes at this page. To obtain the dataset, you are required to fill a form with information about you and your institution, 
+and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: 
+usage of the data implies the acceptance of these Terms And Conditions. 
 
 If you submit to the 2021 Data Challenge leaderboard, you are _required to release your code under an open source license_.
+
+### Dataset
+
+#### Data Description
+
+The dataset is provided as three big text file (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the 
+_Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
+kind to be released to the research community: please review the Data Challenge paper (WIP) for a comparison with 
+existing datasets and for the motivations behind the release format. For your convenience, three sample files 
+are included in the `start` folder, showcasing the data structure. 
+Below, you will find a detailed description for each file.
+
+##### Browsing Events
+
+The file `browsing_train.csv` contains almost 5M anonymized shopping [sessions](https://support.google.com/analytics/answer/2731565?hl=en).
+The structure of this dataset is similar to our [Scientific Reports](https://github.com/coveooss/shopper-intent-prediction-nature-2020) data release: 
+each row corresponds to a browsing event in a session, containing session and timestamp information, as well as 
+(hashed) details on the interaction (was it _purchase_ or a _detail_ event? Was it a simple _pageview_ or a specific
+product action?). All data was collected and processed in an anonymized fashion through our standard [SDK](https://docs.coveo.com/en/3188/coveo-for-commerce/tracking-commerce-events):
+remember that front-end tracking is by nature imperfect, so small inconsistencies are to be expected.
+
+Field | Type | Description
+------------ | ------------- | -------------
+session_id_hash | string | Hashed identifier of the shopping session. A session groups together events that are at most 30 minutes apart: if the same user comes back to the target website after 31 minutes from the last interaction, a new session identifier is assigned.
+event_type | enum | The type of event according to the [Google Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1), one of { _pageview_ , _event_ }; for example, an _add_ event can happen on a page load, or as a stand-alone event.
+product_action | enum | One of { _detail_, _add_, _purchase_, _remove_, _click_ }. If the field is empty, the event is a simple page view (e.g. the `FAQ` page) without associated products. Please also note that an action involving removing a product from the cart might lead to several consecutive _remove_ events.
+product_sku_hash | string | If the event is a _product_ event, hashed identifier of the product in the event.
+server_timestamp_epoch_ms | int | Epoch time, in milliseconds. As a further anonymization technique, the timestamp has been shifted by an unspecified amount of weeks, keeping intact the intra-week patterns.
+hashed_url | string | Hashed url of the current web page.
+
+Finally, please be aware that a PDP may generate both a _detail_ and a _pageview_ event, and that the order of the events in the 
+file is not strictly chronological (refer to the session identifier and the timestamp information to reconstruct the 
+actual chain of events for a given session). 
+
+##### Search Events
+
+The file `search_train.csv` contains more than 800k search-based interactions. Each row is a search query event issued by a shopper, which includes an array of (hashed) results returned to the client. We also provide which result(s) have been clicked from the result set, if any. 
+By reporting also products seen but not clicked, we hope to inspire clever ways to use negative feedback. 
+
+Field | Type | Description
+------------ | ------------- | -------------
+session_id_hash | string | Hashed identifier of the shopping session. A session groups together events that are at most 30 minutes apart: if the same user comes back to the target website after 31 minutes from the last interaction, a new session identifier is assigned.
+server_timestamp_epoch_ms | int | Epoch time, in milliseconds. As a further anonymization technique, the timestamp has been shifted by an unspecified amount of weeks, keeping intact the intra-week patterns.
+query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques.
+product_skus_hash | string | Hashed identifiers of the products in the search response.
+clicked_skus_hash | string | Hashed identifiers of the products clicked after issuing the search query.
+
+
+##### Catalog Metadata
+
+The file `sku_to_content.csv` contains a mapping between (hashed) product identifiers (SKUs) and dense representation
+of textual and image meta-data from the actual catalog, for all the SKUs in the training and the Challenge evaluation
+dataset (when the information is available).
+
+Field | Type | Description
+------------ | ------------- | -------------
+product_sku_hash | string | Hashed identifier of product ID (SKU).
+category_hash | string | The categories are hashed representations of a category tree where each level of hierarchy is separated with a `/`.
+price_bucket | int | The product price, provided as a 10-quantile integer.
+description_vector | vector | A dense representation of textual meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
+image_vector| vector | A dense representation of image meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
+
+#### How to Start
+
+Download the `zip` folder and unzip it in your local machine. To verify that all is well, you can run the simple
+`start/dataset_stats.py` script in the folder: the script will parse the three files, show some sample rows and 
+and print out some basic stats and counts (if you don't modify the three paths, it will run on the sample `csv`).
+
+Please remember that usage of this dataset implies acceptance of the  Terms And Conditions: you agree to 
+not use the dataset for any other purpose  than what is stated in the Terms and Conditions, 
+nor attempt to reverse engineer or de-anonymise the dataset by explicitly or implicitly linking the data 
+to any person, brand or legal entity.
+
+
+### Data Challenge Evaluation
+
+If you are using this dataset for independent research purposes, you can skip this section.
+
+If you are using this dataset for the SIGIR eCom Data Challenge, please read carefully this section, as it
+contains information about the two tasks, the evaluation metrics and the submission process.
+
+#### Tasks
+
+The SIGIR Data Challenge will welcome submissions on two separate use cases:
+
+* *a session-based recommendation task*, where a model is asked to predict the next interactions between shoppers and products, based on the previous product interactions and search queries within a session;
+* *a cart-abandonment task*, where, given a session containing an add-to-cart event for a product X, 
+a model is asked to predict whether the shopper will buy X or not in that session.
+
+#### Evaluation
+
+WIP
+
+#### Submission Process
+
+WIP
+
+### Baselines
+
+We adapted the code from [session-rec](https://github.com/rn5l/session-rec) repository, and share in the `baselines`
+folder what is necessary to shape the dataset and run the baseline model, which is an in-session recommendation system.
+
 
 ### Contacts
 
@@ -19,7 +127,6 @@ For questions about the challenge or the dataset, please reach out to [Jacopo Ta
 ### Acknowledgments
 The SIGIR Data Challenge is a collaboration between industry and academia, over a dataset gently provided by Coveo.
 The authors of the paper are:
-
 
 * [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/) - Coveo AI Labs
 * [Ciro Greco](https://www.linkedin.com/in/cirogreco/) - Coveo AI Labs
