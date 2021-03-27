@@ -22,8 +22,7 @@ If you submit to the 2021 Data Challenge leaderboard, you are _required to relea
 
 #### Data Description
 
-The dataset is provided as three big text file (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the 
-_Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
+The dataset is provided as three big text files (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the _Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
 kind to be released to the research community: please review the Data Challenge paper (WIP) for a comparison with 
 existing datasets and for the motivations behind the release format. For your convenience, three sample files 
 are included in the `start` folder, showcasing the data structure. 
@@ -61,8 +60,8 @@ Field | Type | Description
 session_id_hash | string | Hashed identifier of the shopping session. A session groups together events that are at most 30 minutes apart: if the same user comes back to the target website after 31 minutes from the last interaction, a new session identifier is assigned.
 server_timestamp_epoch_ms | int | Epoch time, in milliseconds. As a further anonymization technique, the timestamp has been shifted by an unspecified amount of weeks, keeping intact the intra-week patterns.
 query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques.
-product_skus_hash | string | Hashed identifiers of the products in the search response.
-clicked_skus_hash | string | Hashed identifiers of the products clicked after issuing the search query.
+product_skus_hash | list | Hashed identifiers of the products in the search response.
+clicked_skus_hash | list | Hashed identifiers of the products clicked after issuing the search query.
 
 
 ##### Catalog Metadata
@@ -74,7 +73,7 @@ dataset (when the information is available).
 Field | Type | Description
 ------------ | ------------- | -------------
 product_sku_hash | string | Hashed identifier of product ID (SKU).
-category_hash | string | The categories are hashed representations of a category tree where each level of hierarchy is separated with a `/`.
+category_hash | string | The categories are hashed representations of the category hierarchy, `/`-separated.
 price_bucket | int | The product price, provided as a 10-quantile integer.
 description_vector | vector | A dense representation of textual meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
 image_vector| vector | A dense representation of image meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
