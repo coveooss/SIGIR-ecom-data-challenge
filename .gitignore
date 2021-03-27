@@ -152,7 +152,6 @@ fabric.properties
 
 
 *.env
-*.json
 *.zip
 *.txt
 !requirements.txt
