@@ -102,8 +102,9 @@ contains information about the two tasks, the evaluation metrics and the submiss
 The SIGIR Data Challenge will welcome submissions on two separate use cases:
 
 * *a session-based recommendation task*, where a model is asked to predict the next interactions between shoppers and products, based on the previous product interactions and search queries within a session;
-* *a cart-abandonment task*, where, given a session containing an add-to-cart event for a product X, 
-a model is asked to predict whether the shopper will buy X or not in that session.
+* *a cart-abandonment task*, where, given a session containing an add-to-cart event for a product X, a model is asked to predict whether the shopper will buy X or not in that session.
+
+For the recommendation task, there is recent literature on [both](https://arxiv.org/pdf/2009.10002.pdf) [modelling](https://arxiv.org/pdf/2012.09807.pdf) and [empirical analyses](https://arxiv.org/pdf/1910.12781.pdf); for the cart-abandonment task, "[Shopper intent prediction from clickstream e‑commerce data with minimal browsing information](https://rdcu.be/b8oqN)" is a good overview of clickstream prediction in eCommerce, and provides extensive benchmarks on neural architectures for sequence classification. Please refer to the Data Challenge paper (WIP) for a more extensive literature review and discussion of relevant use cases.
 
 #### Evaluation
 
