@@ -59,7 +59,7 @@ Field | Type | Description
 ------------ | ------------- | -------------
 session_id_hash | string | Hashed identifier of the shopping session. A session groups together events that are at most 30 minutes apart: if the same user comes back to the target website after 31 minutes from the last interaction, a new session identifier is assigned.
 server_timestamp_epoch_ms | int | Epoch time, in milliseconds. As a further anonymization technique, the timestamp has been shifted by an unspecified amount of weeks, keeping intact the intra-week patterns.
-query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques.
+query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques. Please note that this representation is compatible with the one in the catalog file.
 product_skus_hash | list | Hashed identifiers of the products in the search response.
 clicked_skus_hash | list | Hashed identifiers of the products clicked after issuing the search query.
 
@@ -75,7 +75,7 @@ Field | Type | Description
 product_sku_hash | string | Hashed identifier of product ID (SKU).
 category_hash | string | The categories are hashed representations of the category hierarchy, `/`-separated.
 price_bucket | int | The product price, provided as a 10-quantile integer.
-description_vector | vector | A dense representation of textual meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
+description_vector | vector | A dense representation of textual meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques. Please note that this representation is compatible with the one in the search file.
 image_vector| vector | A dense representation of image meta-data, obtained through standard pre-trained modeling and dimensionality reduction techniques.
 
 #### How to Start
