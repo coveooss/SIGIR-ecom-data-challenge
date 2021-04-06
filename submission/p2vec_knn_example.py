@@ -54,7 +54,7 @@ def read_sessions_from_training_file(training_file: str, K: int = None):
         reader = csv.DictReader(csvfile)
         for idx, row in enumerate(reader):
             # if a max number of items is specified, just return at the K with what you have
-            if K and idx >=  K:
+            if K and idx >= K:
                 break
             # just append "detail" events in the order we see them
             # row will contain: session_id_hash, product_action, product_sku_hash
@@ -102,14 +102,14 @@ def make_predictions(prod2vec_model, test_file: str):
                 cnt_preds += 1
 
         # append the label - which needs to be a list
-        _pred["label"]: [ next_sku ]
+        _pred["label"] = [ next_sku ]
         # append prediction to the final list
         my_predictions.append(_pred)
 
     # check for consistency
     assert len(my_predictions) == len(test_queries)
     # print out some "coverage"
-    print("Predictions made {} out of {} test cases".format(cnt_preds, len(test_queries)))
+    print("Predictions made in {} out of {} total test cases".format(cnt_preds, len(test_queries)))
 
     return my_predictions
 
@@ -140,4 +140,4 @@ def train_knn(upload=False):
 
 
 if __name__ == "__main__":
-    train_knn(upload=False)
+    train_knn(upload=True)
