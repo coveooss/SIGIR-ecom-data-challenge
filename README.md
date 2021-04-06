@@ -135,9 +135,9 @@ that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in millise
 
 The S3 path structure should have the following format:
 
-`rec/1/49a158cb-510f-4cea-8abe-0a3218d1b5ae/[LOCALFILE]`
+`rec/49a158cb-510f-4cea-8abe-0a3218d1b5ae/[LOCALFILE]`
 
-that is, the task (`rec` or `cart`), the phase of the Challenge (`1` or `2`), the user id you were provided
+that is, the task (`rec` or `cart`), the user id you were provided
 with at the sign-up, and the actual `json` file, named according to the rules above. For your convenience,
 we provide you with a read-made script that given a local submission file, proceed with the upload to the
 Challenge bucket (see below).

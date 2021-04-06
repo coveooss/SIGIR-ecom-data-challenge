@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 # load envs from env file
 load_dotenv(verbose=True, dotenv_path='upload.env')
 
-
-PHASE = 1  # 1 or 2: make sure to switch to 2 ONLY during the second phase
 # env info should be in your env file
 BUCKET_NAME = os.getenv('BUCKET_NAME') # you received it in your e-mail
 EMAIL = os.getenv('EMAIL') # the e-mail you used to sign up
@@ -28,7 +26,7 @@ def upload_submission(
         region_name='us-west-2'
     )
     # prepare s3 path according to the spec
-    s3_file_path = '{}/{}/{}/{}'.format(task, PHASE, USER_ID, local_file)  # it needs to be like e.g. "rec/1/id/*.json"
+    s3_file_path = '{}/{}/{}'.format(task, USER_ID, local_file)  # it needs to be like e.g. "rec/1/id/*.json"
     # upload file
     s3_client.upload_file(local_file, BUCKET_NAME, s3_file_path)
     # say bye
