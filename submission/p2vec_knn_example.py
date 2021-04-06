@@ -120,7 +120,7 @@ def train_knn(upload=False):
     #  to avoid waiting too much, we just train on the first K events
     sessions = read_sessions_from_training_file(
         training_file='browsing_train.csv',
-        K=5000000)
+        K=300000)
     # train p2vec, leaving all the default hyperparameters
     prod2vec_model = train_product_2_vec_model(sessions)
     # use model to predict
