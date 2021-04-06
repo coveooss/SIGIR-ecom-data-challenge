@@ -26,7 +26,7 @@ def upload_submission(
         region_name='us-west-2'
     )
     # prepare s3 path according to the spec
-    s3_file_path = '{}/{}/{}'.format(task, USER_ID, local_file)  # it needs to be like e.g. "rec/1/id/*.json"
+    s3_file_path = '{}/{}/{}'.format(task, USER_ID, local_file)  # it needs to be like e.g. "rec/id/*.json"
     # upload file
     s3_client.upload_file(local_file, BUCKET_NAME, s3_file_path)
     # say bye
