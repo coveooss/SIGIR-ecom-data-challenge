@@ -12,7 +12,7 @@ This page is a WIP - please come back often in the upcoming weeks to check for u
 
 ### License
 
-The dataset is available for research and educational purposes at this page. To obtain the dataset, you are required to fill a form with information about you and your institution, 
+The dataset is available for research and educational purposes at [this page](https://www.coveo.com/en/ailabs/sigir-ecom-data-challenge). To obtain the dataset, you are required to fill a form with information about you and your institution, 
 and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: 
 usage of the data implies the acceptance of these Terms And Conditions. 
 
@@ -112,13 +112,65 @@ WIP
 
 #### Submission Process
 
+To submit to the Data Challenge, please first visit the Challenge web-page (TBC). You will be asked to sign up to
+receive your user id and write-only credentials to an AWS S3 bucket, necessary to upload your submission: treat
+the credentials with the necessary precautions (please note that the Challenge is hosted on a devoted AWS account, 
+which will be deleted at the end of Challenge).
+
+
+##### Challenge rules
+
 WIP
+
+##### Submission file
+
+Submissions are just json files, which are exactly the same as the test files you are provided with at sign-up,
+but containing a `label` field: your model should fill `label` with its predictions, which will be compared
+to the ground truth by our script to produce the final metrics, and update the leaderboard. The file name
+should have the following format:
+
+`{}_1616887274000.json'.format(EMAIL.replace('@', '_'))`
+
+that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in milliseconds, joined by a `_`.
+
+The S3 path structure should have the following format:
+
+`rec/1/49a158cb-510f-4cea-8abe-0a3218d1b5ae/[LOCALFILE]`
+
+that is, the task (`rec` or `cart`), the phase of the Challenge (`1` or `2`), the user id you were provided
+with at the sign-up, and the actual `json` file, named according to the rules above. For your convenience,
+we provide you with a read-made script that given a local submission file, proceed with the upload to the
+Challenge bucket (see below).
+
+##### Submission upload
+
+Once ready to be submitted, your test file needs to be uploaded to the S3 bucket provided at sign-up, with the
+correct credentials, user id and file structure (see above). 
+
+For your convenience, the script `submission/uploader.py` in this repository can be used to upload your 
+json to the correct bucket: make sure you have an `upload.env` file in the folder, filled the information 
+contained in your sign-up e-mail. Once you change the `LOCAL_FILE` in `submission/uploader.py`
+to the name of the current submission file, running the script from your command line should produce a
+successful submission; after metrics calculation, you will also receive an e-mail acknowledging
+the submission and reporting the scores.
+
+
+#### Submission example
+
+The script `submission/p2vec_knn_example.py` is a simple knn model based on 
+[product embeddings](https://arxiv.org/abs/2007.14906). If you run the script with `browsing_train.csv`
+and `rec_test_phase_1.json` in the same folder, it will produce a local `json` file with labels valid for the
+"next prediction event" evaluation: if you then run  `submission/uploader.py` with the appropriate `LOCAL_NAME` and
+`env` variables, you will have a valid (albeit far from perfect!) submission.
+
+The model is provided as an additional example for the submission process (and perhaps, as an easy baseline) 
+and it is not intended to be in any way a suggestion on how to tackle the Challenge: the script does not perform
+ the necessary checks on timestamp ordering (or any other consistency check). 
 
 ### Baselines
 
 We adapted the code from [session-rec](https://github.com/rn5l/session-rec) repository, and share in the `baselines`
 folder what is necessary to shape the dataset and run the baseline model, which is an in-session recommendation system.
-
 
 ### Contacts
 

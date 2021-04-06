@@ -162,3 +162,5 @@ fabric.properties
 venv/
 *.hdf5
 *.ipynb
+*.json
+
