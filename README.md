@@ -174,12 +174,12 @@ which will be deleted at the end of Challenge).
 The challenge will happen in two phases:
 
 * in the first phase, you can submit at most 10 submissions per task per day;
-* in the second phase, you can submit at most 2 submissions per task per day.
+* in the second phase, you can submit at most 1 submission per task per day.
 
 The winning team is the team leading the leaderboard when the challenge ends: 
 official timelines are on the [SIGIR ecom](https://sigir-ecom.github.io/) page.
 
-Finally, a CFP will be  issued later, encouraging system papers describing models and approaches, as well as 
+Finally, a CFP will be issued in the upcoming weeks, encouraging system papers describing models and approaches, as well as 
 important qualitative insights on the two tasks.
 
 ##### Submission file
