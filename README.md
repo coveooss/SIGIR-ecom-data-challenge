@@ -186,8 +186,57 @@ important qualitative insights on the two tasks.
 
 Submissions are just json files, which are exactly the same as the test files you are provided with at sign-up,
 but containing a `label` field: your model should fill `label` with its predictions, which will be compared
-to the ground truth by our script to produce the final metrics, and update the leaderboard. The file name
-should have the following format:
+to the ground truth by our script to produce the final metrics, and update the leaderboard. 
+
+For the `rec` task, `label` is expected to be a list of hashed product SKU, as in the mock test case below:
+
+```
+{
+    "query": [
+      {
+        "session_id_hash": "bafb7811-482c-4a24-93ea-ab4e40740988",
+        "query_vector": null,
+        "clicked_skus_hash": null,
+        "product_skus_hash": null,
+        "server_timestamp_epoch_ms": 1557432435044,
+        "event_type": "event_product",
+        "product_action": "detail",
+        "product_sku_hash": "f7f2c9d7-f0c1-4cdb-9dba-bec424e83ddd",
+        "is_search": false
+      }
+    ],
+    "label": [
+      "52aa439c-4e14-4a05-8b39-0bed3234d16c",
+      "16891170-4e44-4467-af76-169e0f8cc2cd",
+    ]
+  }
+```
+
+
+For the `cart` task, `label` is expected to be an integer (either 1 or 0), indicating if the session with the add-to-cart
+event will convert into a purchase:
+
+```
+{
+    "query": [
+      {
+        "session_id_hash": "741d0f9f-5c9b-4ccc-b82f-d73d9a728ec9",
+        "query_vector": null,
+        "clicked_skus_hash": null,
+        "product_skus_hash": null,
+        "server_timestamp_epoch_ms": 1556250432707,
+        "event_type": "event_product",
+        "product_action": "detail",
+        "product_sku_hash": "8a373684-51f9-4d04-a0d3-59f46a128ee6",
+        "hashed_url": "3919d6e4-3352-404c-9042-86ff2f239fd8",
+        "is_search": false
+      }
+    ],
+    "label": 0
+  }
+```
+
+The file name should have the following format:
 
 `{}_1616887274000.json'.format(EMAIL.replace('@', '_'))`
 
