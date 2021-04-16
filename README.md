@@ -108,7 +108,49 @@ For the recommendation task, there is recent literature on [both](https://arxiv.
 
 #### Evaluation
 
-WIP
+The `evaluation` folder contains the functions used by the system to evaluate a submission (i.e. a `json` file with labels
+attached by a model - see below): use the code freely on your experiments to get a sense of how much you are progressing.
+
+The code implements the metrics described below, which are all standard in the literature. While we _do_ 
+recognize the importance of a quantitative evaluation, we also strongly encourage teams to investigate the qualitative
+behavior of their models, and include those insights in their papers.
+
+
+##### Rec
+
+We follow a standard evaluation protocol where the models are evaluated by "revealing" part of the session, and they are 
+asked to predict future sessions. Given in input a sequence of _n_ events, we use two evaluation schemes for the `rec` task:
+
+* the model is evaluated at predicting the immediate next item. We use *MRR* as our main metric;
+* the model is evaluated at predicting all subsequent items of the session, up to a maximum of 20 after the current event. We take the *F1* score from *precision@20* and *recall@20* as the final metrics.
+
+While not part of the final ranking, we measure also additional quality factors, interesting for the community 
+and industry use cases, such as _coverage@20_ and _popularity bias@20_. When you submit for the `rec` task, the system
+will automatically score the submission for both tasks, and we will maintain two leaderboards.
+
+Please note that when a test session includes a search query, this event will be available to the model as an 
+input (it can and should be taken into consideration by the model), but it will be ignored when computing the metrics 
+when the rest of the session is compared with the recommendations - in other words, we ask models only to predict 
+future products, not search events.
+
+##### Cart
+
+Models will be evaluated by the *micro-F1 score* in predicting shopping cart abandonment at the first add-to-cart event (AC), 
+and then 2, 4, 6, 8 and 10 events after the first AC. By assessing performance at AC, moreover, 
+we want to stress the importance of predicting intent from as little data as relevant. 
+Each model will be evaluated by performing a weighted combination of  micro-F1 scores at different clicks, 
+with larger weights assigned to earlier predictions according to the following schema:
+ 
+* micro-F1 at AC * 1
+* micro-F1 2 clicks after AC * 0.9
+* micro-F1 4 clicks after AC * 0.8
+* micro-F1 6 clicks after AC * 0.7
+* micro-F1 8 clicks after AC * 0.6
+* micro-F1 10 clicks after AC * 0.5
+
+The test set will not undergo any resampling to even the class distribution. Test sessions including purchases will be cut before the first purchase event, 
+i.e. the session [ sku1_detail, sku1_add, sku3_detail, search, sku4_click, sku1_purchase ]  will be presented in the test set 
+as [ sku1_detail, sku1_add, sku3_detail, search, sku4_click ].
 
 #### Submission Process
 
@@ -117,10 +159,29 @@ receive your user id and write-only credentials to an AWS S3 bucket, necessary t
 the credentials with the necessary precautions (please note that the Challenge is hosted on a devoted AWS account, 
 which will be deleted at the end of Challenge).
 
+Even though this metric is the one on which we determine the winning submission, we encourage submissions 
+to present other metrics including AUC, precision and recall for purchase and cart-abandonment prediction, 
+as well as measures of how sooner than the session ends the correct prediction is made. 
+For example, suppose there are 15 actions after the AC in a purchase session: a model 
+which converges on consistently predicting a purchase from action 11 (not captured in our evaluation) would anticipate 
+the right outcome more than a model which is undecided until the second-to-last action but still correctly 
+predicts a purchase at the end of the session. A measure of anticipation would be very informative although it 
+depends on some free parameters (how strong the support for a given prediction should be, for how many consecutive 
+ctions it should remain stable, what it means to remain stable, etc.): given these degrees of freedom we decided 
+not to make this a ranking criterion, but still would appreciate submissions that show how models behave in this respect.
 
 ##### Challenge rules
 
-WIP
+The challenge will happen in two phases:
+
+* in the first phase, you can submit at most 10 submissions per task per day;
+* in the second phase, you can submit at most 2 submissions per task per day.
+
+The winning team is the team leading the leaderboard when the challenge ends: 
+official timelines are on the [SIGIR ecom](https://sigir-ecom.github.io/) page.
+
+Finally, a CFP will be  issued later, encouraging system papers describing models and approaches, as well as 
+important qualitative insights on the two tasks.
 
 ##### Submission file
 
@@ -164,7 +225,7 @@ and `rec_test_phase_1.json` in the same folder, it will produce a local `json` f
 `env` variables, you will have a valid (albeit far from perfect!) submission.
 
 The model is provided as an additional example for the submission process (and perhaps, as an easy baseline) 
-and it is not intended to be in any way a suggestion on how to tackle the Challenge: the script does not perform
+and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the script does not perform
  the necessary checks on timestamp ordering (or any other consistency check). 
 
 ### Baselines
@@ -187,10 +248,19 @@ The authors of the paper are:
 * [Giovanni Cassani](https://giovannicassani.github.io/) - Tillburg University
 * [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
 
-The authors wish to thank [Richard Tessier](https://www.linkedin.com/in/richardtessier/) and Coveo's legal team for supporting our research and believing in 
-this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
+The authors wish to thank Coveo's legal team for supporting our research and believing in 
+this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) 
+and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
 
 ### How to Cite our Work
 
-WIP
+If you use this dataset, please cite our work:
 
+```
+@inproceedings{CoveoSIGIR2021,
+author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing},
+title = {Coveo Data Challenge},
+year = {2021},
+booktitle = {SIGIR eCom 2021}
+}
+```
