@@ -148,16 +148,8 @@ with larger weights assigned to earlier predictions according to the following s
 * micro-F1 8 clicks after AC * 0.6
 * micro-F1 10 clicks after AC * 0.5
 
-The test set will not undergo any resampling to even the class distribution. Test sessions including purchases will be cut before the first purchase event, 
-i.e. the session [ sku1_detail, sku1_add, sku3_detail, search, sku4_click, sku1_purchase ]  will be presented in the test set 
-as [ sku1_detail, sku1_add, sku3_detail, search, sku4_click ].
-
-#### Submission Process
-
-To submit to the Data Challenge, please first visit the Challenge web-page (TBC). You will be asked to sign up to
-receive your user id and write-only credentials to an AWS S3 bucket, necessary to upload your submission: treat
-the credentials with the necessary precautions (please note that the Challenge is hosted on a devoted AWS account, 
-which will be deleted at the end of Challenge).
+The test set will not undergo any resampling to even the class distribution: to avoid trivializing inference, test 
+sessions including purchases will be cut before the first purchase event.
 
 Even though this metric is the one on which we determine the winning submission, we encourage submissions 
 to present other metrics including AUC, precision and recall for purchase and cart-abandonment prediction, 
@@ -169,6 +161,13 @@ predicts a purchase at the end of the session. A measure of anticipation would b
 depends on some free parameters (how strong the support for a given prediction should be, for how many consecutive 
 ctions it should remain stable, what it means to remain stable, etc.): given these degrees of freedom we decided 
 not to make this a ranking criterion, but still would appreciate submissions that show how models behave in this respect.
+
+#### Submission Process
+
+To submit to the Data Challenge, please first visit the Challenge web-page (TBC). You will be asked to sign up to
+receive your user id and write-only credentials to an AWS S3 bucket, necessary to upload your submission: treat
+the credentials with the necessary precautions (please note that the Challenge is hosted on a devoted AWS account, 
+which will be deleted at the end of Challenge).
 
 ##### Challenge rules
 
