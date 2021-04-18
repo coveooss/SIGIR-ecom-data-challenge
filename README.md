@@ -307,7 +307,7 @@ If you use this dataset, please cite our work:
 ```
 @inproceedings{CoveoSIGIR2021,
 author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing},
-title = {Coveo Data Challenge},
+title = {SIGIR 2021 E-Commerce Workshop Data Challenge},
 year = {2021},
 booktitle = {SIGIR eCom 2021}
 }
