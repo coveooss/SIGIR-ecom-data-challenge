@@ -286,7 +286,7 @@ folder what is necessary to shape the dataset and run the baseline model, which 
 
 ### Contacts
 
-* For questions about using the dataset as part of our research, please reach out to [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/).
+* For questions about using the dataset as part of your research, please reach out to [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/).
 * For questions about the Challenge, please join the Data Challenge Slack from the challenge [main page](https://sigir-ecom.github.io/data-task.html), and chat with us there.
 
 ### Acknowledgments
