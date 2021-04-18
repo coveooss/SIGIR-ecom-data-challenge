@@ -299,10 +299,10 @@ The authors of the paper are:
 * [Federico Bianchi](https://www.linkedin.com/in/federico-bianchi-3b7998121/) - Postdoctoral Researcher at Università Bocconi
 * [Giovanni Cassani](https://giovannicassani.github.io/) - Tillburg University
 * [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
+* [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) - Coveo
 
 The authors wish to thank Richard Tessier and the entire Coveo's legal team, for supporting our research and believing in 
-this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) 
-and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
+this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) for help in data collection and preparation.
 
 ### How to Cite our Work
 
@@ -310,7 +310,7 @@ If you use this dataset, please cite our work:
 
 ```
 @inproceedings{CoveoSIGIR2021,
-author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing},
+author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing and Chia, Patrick John},
 title = {SIGIR 2021 E-Commerce Workshop Data Challenge},
 year = {2021},
 booktitle = {SIGIR eCom 2021}
