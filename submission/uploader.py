@@ -1,3 +1,11 @@
+"""
+
+    Sample script showing how to submit a prediction json file to the AWS bucket assigned to you for the challenge.
+    Credentials are in your sign-up e-mail: please refer to the full project README for the exact format of the file
+    and the naming convention you need to respect.
+
+"""
+
 import os
 import boto3
 from datetime import datetime
