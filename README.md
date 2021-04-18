@@ -251,7 +251,7 @@ The S3 path structure should have the following format:
 
 that is, the task (`rec` or `cart`), the user id you were provided
 with at the sign-up, and the actual `json` file, named according to the rules above. For your convenience,
-we provide you with a read-made script that given a local submission file, proceed with the upload to the
+we provide you with a ready-made script that given a local submission file, performs the upload to the
 Challenge bucket (see below).
 
 ##### Submission upload
