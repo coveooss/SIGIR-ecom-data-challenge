@@ -21,8 +21,7 @@ def convert_list_to_top_K(items_list: list, topK: int):
     :param topK: top K limit
     :return: list of items shortened with top K
     """
-    converted_items = [items[:topK] for items in items_list]
-    return converted_items
+    return [items[:topK] for items in items_list]
 
 
 def mrr_at_k(preds: list, labels: list, topK: int):
@@ -99,7 +98,7 @@ def weighted_micro_f1(preds, labels, nb_after_add, weights: dict):
 
 def next_item_metric(preds:list, labels:list, top_K: int =20):
     """
-    Compute metric for next item recommendation
+    Compute metric for next item recommendation task.
 
     :param preds: list where each element is a list of item recommendations
     :param labels: list where each element is a list of ground truth items viewed
@@ -111,7 +110,8 @@ def next_item_metric(preds:list, labels:list, top_K: int =20):
 
 def subsequent_items_metric(preds:list, labels:list, top_K: int =20):
     """
-    Compute metric for all subsequent item recommendation
+    Compute metric for the all items recommendation task.
+
     :param preds:
     :param labels:
     :param top_K: as per README, by default we consider metric @ K=20
@@ -122,7 +122,7 @@ def subsequent_items_metric(preds:list, labels:list, top_K: int =20):
 
 def cart_abandonment_metric(preds:list, labels:list, nb_after_add: list):
     """
-    Compute metric for cart abandonment
+    Compute metric for the cart abandonment task.
 
     :param preds: list where each element is a cart-abandonment prediction
     :param labels: list where each element is cart-abandonment ground truth label
