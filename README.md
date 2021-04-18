@@ -2,7 +2,7 @@
 _Public Data Release 1.0.0_
 
 ### Overview
-Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility 
+Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/data-task.html) Data Challenge and this repository will contain utility 
 scripts and information about data preparation and testing for the Challenge.
 
 Since the dataset is released to the community for research use even outside of the Data Challenge, 
@@ -16,7 +16,7 @@ The dataset is available for research and educational purposes at [this page](ht
 and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: 
 usage of the data implies the acceptance of these Terms And Conditions. 
 
-If you submit to the 2021 Data Challenge leaderboard, you are _required to release your code under an open source license_.
+If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github.io/data-task.html), you are _required to release your code under an open source license_.
 
 ### Dataset
 
@@ -167,7 +167,7 @@ not to make this a ranking criterion, but still would appreciate submissions tha
 
 #### Submission Process
 
-To submit to the Data Challenge, please first visit the Challenge web-page (TBC). You will be asked to sign up to
+To submit to the Data Challenge, please first visit the [Challenge web-page](https://sigir-ecom.github.io/data-task.html). You will be asked to sign up to
 receive your user id and write-only credentials to an AWS S3 bucket, necessary to upload your submission: treat
 the credentials with the necessary precautions (please note that the Challenge is hosted on a devoted AWS account, 
 which will be deleted at the end of Challenge).
@@ -180,7 +180,7 @@ The challenge will happen in two phases:
 * in the second phase, you can submit at most 1 submission per task per day.
 
 The winning team is the team leading the leaderboard when the challenge ends: 
-official timelines are on the [SIGIR ecom](https://sigir-ecom.github.io/) page.
+official timelines are on the [SIGIR ecom](https://sigir-ecom.github.io/data-task.html) page.
 
 Finally, a CFP will be issued in the upcoming weeks, encouraging system papers describing models and approaches, as well as 
 important qualitative insights on the two tasks.
