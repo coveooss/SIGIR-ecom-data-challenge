@@ -1,28 +1,29 @@
-'''
-In this file, we demonstrate how we perform the evaluation of submissions
-for the leaderboard. Namely, we will cover how metrics for the  session-bassed recommendation tasks are computed
-and how the metrics for the cart-abandonment task are computed
-'''
+"""
+    In this script, we demonstrate how we perform the quantitative evaluation of the submissions
+    for our two tasks, rec and cart.
+
+    For information about the general evaluation procedure and relevant context, please refer to the README
+    and the Data Challenge paper.
+"""
 import json
 import random
 from collections import defaultdict
 import numpy as np
 from random import randint
 
-# We need to have a standalone python script in the public repo, that shows how the main metrics (leaderboard) are
-# computed, starting from a json submission, with clear instructions on how to run it.
 
 def convert_list_to_top_K(items_list: list, topK: int):
-    '''
+    """
     Extract top_K items
     It is assumed that the list of items are sorted in descending order of importance/weight/relevance
 
     :param items_list: list where element is a list of items
     :param topK: top K limit
     :return: list of items shortened with top K
-    '''
+    """
     converted_items = [items[:topK] for items in items_list]
     return converted_items
+
 
 def mrr_at_k(preds: list, labels: list, topK: int):
     assert len(labels) > 0
@@ -46,6 +47,7 @@ def mrr_at_k(preds: list, labels: list, topK: int):
 
     # return the mean reciprocal rank
     return sum(rr) / len(labels)
+
 
 def f1_at_k(preds: list, labels: list, topK: int):
     assert len(labels) > 0
@@ -71,6 +73,7 @@ def f1_at_k(preds: list, labels: list, topK: int):
     avg_f1 = sum(all_f1) / len(labels)
     return avg_f1
 
+
 def weighted_micro_f1(preds, labels, nb_after_add, weights: dict):
     assert len(labels) > 0
     assert len(preds) == len(labels)
@@ -90,53 +93,56 @@ def weighted_micro_f1(preds, labels, nb_after_add, weights: dict):
         micro_f1 = num_correct/len(p_and_l)
         metric_to_score[n] = micro_f1
     weighted_sum = sum([ f1*weights[n] for n,f1 in metric_to_score.items()])
+
     return weighted_sum
 
 
-def next_item_metric(preds:list, labels:list):
-    '''
+def next_item_metric(preds:list, labels:list, top_K: int =20):
+    """
     Compute metric for next item recommendation
 
     :param preds: list where each element is a list of item recommendations
     :param labels: list where each element is a list of ground truth items viewed
+    :param top_K: as per README, by default we consider metric @ K=20
     :return: mrr for next item prediction
-    '''
-    top_K = 20 # as per README we consider metric @ K=20
+    """
     return mrr_at_k(preds, labels, top_K)
 
-def subsequent_items_metric(preds:list, labels:list):
-    '''
+
+def subsequent_items_metric(preds:list, labels:list, top_K: int =20):
+    """
     Compute metric for all subsequent item recommendation
     :param preds:
     :param labels:
-    :return:
-    '''
-    top_K = 20 # as per README we consider metric @ K=20
+    :param top_K: as per README, by default we consider metric @ K=20
+    :return: f1 for all items prediction
+    """
     return f1_at_k(preds, labels, top_K)
 
 
 def cart_abandonment_metric(preds:list, labels:list, nb_after_add: list):
-    '''
+    """
     Compute metric for cart abandonment
 
     :param preds: list where each element is a cart-abandonment prediction
     :param labels: list where each element is cart-abandonment ground truth label
     :param nb_after_add: list where each element denotes number of events after the add-to-cart event
     :return: weighted micro-f1 for cart abandonment preidciton
-    '''
+    """
 
     # weights for N events after add-to-cart (refer to README)
     weights = {0: 1.0, 2: 0.9, 4: 0.8, 6: 0.7, 8: 0.6, 10: 0.5}
     return weighted_micro_f1(preds, labels, nb_after_add, weights)
 
+
 def evaluate_recs(path_to_predictions: str, path_to_ground_truth: str):
-    '''
+    """
     This function computes the leaderboard metrics for the in-session recommendation task
 
     :param path_to_predictions: path of json file which stores predictions
     :param path_to_ground_truth: path of json file which stores ground truth
     :return: dictionary storing metrics for session-based recommendation task
-    '''
+    """
 
     # read predictions file
     with open(path_to_predictions) as f:
@@ -150,7 +156,7 @@ def evaluate_recs(path_to_predictions: str, path_to_ground_truth: str):
     assert all('label' in _ for _ in prediction_data)
     assert all('label' in _ for _ in ground_truth_data)
 
-    # extract prediction and groun truth labels
+    # extract prediction and ground truth labels
     predictions = [_['label'] for _ in prediction_data]
     ground_truth = [_['label'] for _ in ground_truth_data]
 
@@ -163,13 +169,13 @@ def evaluate_recs(path_to_predictions: str, path_to_ground_truth: str):
 
 
 def evaluate_cart(path_to_predictions: str, path_to_ground_truth: str):
-    '''
+    """
     This function computes the leaderboard metrics for the cart-abandonmnet prediction task
 
     :param path_to_predictions: path of json file which stores predictions
     :param path_to_ground_truth: path of json file which stores ground truth
     :return: dictionary storing metrics for session-based recommendation task
-    '''
+    """
 
     # read predictions file
     with open(path_to_predictions) as f:
@@ -194,10 +200,11 @@ def evaluate_cart(path_to_predictions: str, path_to_ground_truth: str):
 
     return {'weighted_micro_f1': weighted_f1}
 
+
 def example_in_session_recommedation():
-    '''
+    """
     Demonstrate usage of evaluation function for in-session recommendation on dummy data
-    '''
+    """
     random.seed(0)
     np.random.seed(0)
 
@@ -227,10 +234,13 @@ def example_in_session_recommedation():
     # call evaluation functions, passing paths to predictions and ground truth
     print(evaluate_recs(PATH_TO_PRED_REC, PATH_TO_GT_REC))
 
+    return
+
+
 def example_cart_abandonment():
-    '''
+    """
     Demonstrate usage of evaluation function for cart-abandonment prediction task on dummy data
-    '''
+    """
     random.seed(0)
     np.random.seed(0)
 
@@ -257,9 +267,12 @@ def example_cart_abandonment():
     # call evaluation functions, passing paths to predictions and ground truth
     print(evaluate_cart(PATH_TO_PRED_CART, PATH_TO_GT_CART))
 
+    return
+
 
 if __name__ == '__main__':
-
+    # if you run the script, the two mock functions will demonstrate the
+    # evaluation for the two tasks in the Challenge
     example_in_session_recommedation()
     example_cart_abandonment()
 
