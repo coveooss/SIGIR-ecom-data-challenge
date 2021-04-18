@@ -286,7 +286,8 @@ folder what is necessary to shape the dataset and run the baseline model, which 
 
 ### Contacts
 
-For questions about the challenge or the dataset, please reach out to [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/).
+* For questions about using the dataset as part of our research, please reach out to [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/).
+* For questions about the Challenge, please join the Data Challenge Slack from the challenge [main page](https://sigir-ecom.github.io/data-task.html), and chat with us there.
 
 ### Acknowledgments
 The SIGIR Data Challenge is a collaboration between industry and academia, over a dataset gently provided by Coveo.
@@ -299,7 +300,7 @@ The authors of the paper are:
 * [Giovanni Cassani](https://giovannicassani.github.io/) - Tillburg University
 * [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
 
-The authors wish to thank Coveo's legal team for supporting our research and believing in 
+The authors wish to thank Richard Tessier and the entire Coveo's legal team, for supporting our research and believing in 
 this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) 
 and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
 
