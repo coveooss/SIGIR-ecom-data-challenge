@@ -1,0 +1,36 @@
+---
+type: single # single|window, maybe add opt
+key: models #added to the csv names
+evaluation: evaluation_last #evaluation|evaluation_last|evaluation_multiple
+data:
+  name: sigir #added in the end of the csv names
+  folder: data/session_rec_sigir_data/prepared/
+  prefix: sigir
+
+results:
+  folder: results/last/sigir/
+
+metrics:
+- class: accuracy.HitRate
+  length: [3,5,10,15,20]
+- class: accuracy.MRR
+  length: [3,5,10,15,20]
+- class: accuracy_multiple.NDCG
+  length: [3,5,10,15,20]
+- class: coverage.Coverage
+  length: [20]
+- class: popularity.Popularity
+  length: [20]
+- class: saver.Saver
+  length: [20]
+
+algorithms:
+- class: gru4rec.gru4rec.GRU4Rec
+  params: { loss: 'top1-max', final_act: 'linear', dropout_p_hidden: 0.1, learning_rate: 0.08, momentum: 0.1, constrained_embedding: False }
+  key: gru4rec
+- class: STAMP.model.STAMP.Seq2SeqAttNN
+  params: { init_lr: 0.003, n_epochs: 10, decay_rate: 0.4}
+  key: stamp
+- class: narm.narm.NARM
+  params: { epochs: 20, lr: 0.007, hidden_units: 100, factors: 100 }
+  key: narm
