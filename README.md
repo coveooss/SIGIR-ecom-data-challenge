@@ -5,10 +5,10 @@ _Public Data Release 1.0.0_
 Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/) Data Challenge and this repository will contain utility 
 scripts and information about data preparation and testing for the Challenge.
 
-Since the dataset is released to the community for research use even outside of the Data Challenge, if you are using the dataset for independent reserach you can skip the
-details about evaluation in this README.
+Since the dataset is released to the community for research use even outside of the Data Challenge, 
+if you are using the dataset for independent research you can skip the details about evaluation in this README.
 
-This page is a WIP - please come back often in the upcoming weeks to check for updates and for the final dataset.
+This page is continuously updated: come back often to check for updates on the Data Challenge.
 
 ### License
 
@@ -104,7 +104,10 @@ The SIGIR Data Challenge will welcome submissions on two separate use cases:
 * *a session-based recommendation task*, where a model is asked to predict the next interactions between shoppers and products, based on the previous product interactions and search queries within a session;
 * *a cart-abandonment task*, where, given a session containing an add-to-cart event for a product X, a model is asked to predict whether the shopper will buy X or not in that session.
 
-For the recommendation task, there is recent literature on [both](https://arxiv.org/pdf/2009.10002.pdf) [modelling](https://arxiv.org/pdf/2012.09807.pdf) and [empirical analyses](https://arxiv.org/pdf/1910.12781.pdf); for the cart-abandonment task, "[Shopper intent prediction from clickstream e‑commerce data with minimal browsing information](https://rdcu.be/b8oqN)" is a good overview of clickstream prediction in eCommerce, and provides extensive benchmarks on neural architectures for sequence classification. Please refer to the Data Challenge paper (WIP) for a more extensive literature review and discussion of relevant use cases.
+For the recommendation task, there is recent literature on [both](https://arxiv.org/pdf/2009.10002.pdf) [modelling](https://arxiv.org/pdf/2012.09807.pdf) and [empirical analyses](https://arxiv.org/pdf/1910.12781.pdf); 
+for the cart-abandonment task, "[Shopper intent prediction from clickstream e‑commerce data with minimal browsing information](https://rdcu.be/b8oqN)" 
+is a good overview of clickstream prediction in eCommerce, and provides extensive benchmarks on neural architectures for sequence classification. 
+Please refer to the Data Challenge paper for a more extensive literature review and discussion of relevant use cases.
 
 #### Evaluation
 
