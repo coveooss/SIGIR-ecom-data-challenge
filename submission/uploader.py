@@ -4,6 +4,11 @@
     Credentials are in your sign-up e-mail: please refer to the full project README for the exact format of the file
     and the naming convention you need to respect.
 
+    Make sure to duplicate the .env.local file as an .env file in this folder, and fill it with the right values
+    (or alternatively, set up the corresponding env variables).
+
+    Required packages can be found in the requirements.txt file in this folder.
+
 """
 
 import os
@@ -16,9 +21,9 @@ load_dotenv(verbose=True, dotenv_path='upload.env')
 # env info should be in your env file
 BUCKET_NAME = os.getenv('BUCKET_NAME') # you received it in your e-mail
 EMAIL = os.getenv('EMAIL') # the e-mail you used to sign up
-USER_ID = os.getenv('USER_ID') # you received it in your e-mail
-AWS_WRITE_ONLY_KEY = os.getenv('AWS_WRITE_ONLY_KEY') # you received it in your e-mail
-AWS_WRITE_ONLY_SECRET = os.getenv('AWS_WRITE_ONLY_SECRET') # you received it in your e-mail
+PARTICIPANT_ID = os.getenv('PARTICIPANT_ID') # you received it in your e-mail
+AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY') # you received it in your e-mail
+AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY') # you received it in your e-mail
 
 
 def upload_submission(
@@ -29,12 +34,12 @@ def upload_submission(
     # instantiate boto3 client
     s3_client = boto3.client(
         's3',
-        aws_access_key_id=AWS_WRITE_ONLY_KEY ,
-        aws_secret_access_key=AWS_WRITE_ONLY_SECRET,
+        aws_access_key_id=AWS_ACCESS_KEY ,
+        aws_secret_access_key=AWS_SECRET_KEY,
         region_name='us-west-2'
     )
     # prepare s3 path according to the spec
-    s3_file_path = '{}/{}/{}'.format(task, USER_ID, local_file)  # it needs to be like e.g. "rec/id/*.json"
+    s3_file_path = '{}/{}/{}'.format(task, PARTICIPANT_ID, local_file)  # it needs to be like e.g. "rec/id/*.json"
     # upload file
     s3_client.upload_file(local_file, BUCKET_NAME, s3_file_path)
     # say bye
