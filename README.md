@@ -259,8 +259,9 @@ Once ready to be submitted, your test file needs to be uploaded to the S3 bucket
 correct credentials, user id and file structure (see above). 
 
 For your convenience, the script `submission/uploader.py` in this repository can be used to upload your 
-json to the correct bucket: make sure you have an `upload.env` file in the folder, filled the information 
-contained in your sign-up e-mail. Once you change the `LOCAL_FILE` in `submission/uploader.py`
+json to the correct bucket: make sure to duplicate the `.env.local` file as an `.env` file in this folder, 
+and fill it with the information contained in your sign-up e-mail (or alternatively, set up the 
+corresponding environment variables). Once you change the `LOCAL_FILE` in `submission/uploader.py`
 to the name of the current submission file, running the script from your command line should produce a
 successful submission; after metrics calculation, you will also receive an e-mail acknowledging
 the submission and reporting the scores.
