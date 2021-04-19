@@ -246,7 +246,10 @@ The file name should have the following format:
 
 `{}_1616887274000.json'.format(EMAIL.replace('@', '_'))`
 
-that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in milliseconds, joined by a `_`.
+that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in milliseconds, joined by a `_`. For example,
+a submission for someone having `jtagliabue@coveo.com` as e-mail would look like:
+
+`jtagliabue_coveo.com_1616887274000.json`
 
 The S3 path structure should have the following format:
 
