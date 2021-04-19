@@ -8,13 +8,17 @@ scripts and information about data preparation and testing for the Challenge.
 Since the dataset is released to the community for research use even outside of the Data Challenge, 
 if you are using the dataset for independent research you can skip the details about evaluation in this README.
 
+_Note: there has been some issues when downloading the file using Safari; we suggest you use Chrome for the download and sign-up
+process._
+
 This page is continuously updated: come back often to check for updates on the Data Challenge.
 
 ### License
 
-The dataset is available for research and educational purposes at [this page](https://www.coveo.com/en/ailabs/sigir-ecom-data-challenge). To obtain the dataset, you are required to fill a form with information about you and your institution, 
+The dataset is available for research and educational purposes at [this page](https://www.coveo.com/en/ailabs/sigir-ecom-data-challenge). To obtain the dataset, 
+you are required to fill a form with information about you and your institution, 
 and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: 
-usage of the data implies the acceptance of these Terms And Conditions. 
+usage of the data implies the acceptance of these Terms And Conditions.
 
 If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github.io/data-task.html), you are _required to release your code under an open source license_.
 
@@ -23,7 +27,7 @@ If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github
 #### Data Description
 
 The dataset is provided as three big text files (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the _Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
-kind to be released to the research community: please review the Data Challenge paper (WIP) for a comparison with 
+kind to be released to the research community: please review the Data Challenge paper for a comparison with 
 existing datasets and for the motivations behind the release format. For your convenience, three sample files 
 are included in the `start` folder, showcasing the data structure. 
 Below, you will find a detailed description for each file.
