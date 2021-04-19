@@ -215,9 +215,8 @@ For the `rec` task, `label` is expected to be a list of hashed product SKU, as i
   }
 ```
 
-
-For the `cart` task, `label` is expected to be an integer (either 1 or 0), indicating if the session with the add-to-cart
-event will convert into a purchase:
+For the `cart` task, `label` is expected to be an integer, 
+indicating if the session with the add-to-cart event will convert into a purchase (1) or not (0):
 
 ```
 {
