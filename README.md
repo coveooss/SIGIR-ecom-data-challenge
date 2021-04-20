@@ -4,7 +4,7 @@ _Public Data Release 1.0.0_
 ### Overview
 Coveo hosts the 2021 [SIGIR eCom](https://sigir-ecom.github.io/data-task.html) Data Challenge and this repository contains utility 
 scripts and information about data preparation and testing for the Challenge: the paper introducing the Challenge 
-is available as a draft on [arxiv](https://arxiv.org/pdf/2104.09423.pdf).
+is available as a draft on [arxiv](https://arxiv.org/abs/2104.09423).
 
 Since the dataset is released to the community for research use even outside of the Data Challenge, 
 if you are using the dataset for independent research you can skip the details about evaluation in this README.
@@ -28,7 +28,7 @@ If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github
 #### Data Description
 
 The dataset is provided as three big text files (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the _Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
-kind to be released to the research community: please review the [Data Challenge paper](https://arxiv.org/pdf/2104.09423.pdf) for a comparison with 
+kind to be released to the research community: please review the [Data Challenge paper](https://arxiv.org/abs/2104.09423) for a comparison with 
 existing datasets and for the motivations behind the release format. For your convenience, three sample files 
 are included in the `start` folder, showcasing the data structure. 
 Below, you will find a detailed description for each file.
@@ -112,7 +112,7 @@ The SIGIR Data Challenge will welcome submissions on two separate use cases:
 For the recommendation task, there is recent literature on [both](https://arxiv.org/pdf/2009.10002.pdf) [modelling](https://arxiv.org/pdf/2012.09807.pdf) and [empirical analyses](https://arxiv.org/pdf/1910.12781.pdf); 
 for the cart-abandonment task, "[Shopper intent prediction from clickstream e‑commerce data with minimal browsing information](https://rdcu.be/b8oqN)" 
 is a good overview of clickstream prediction in eCommerce, and provides extensive benchmarks on neural architectures for sequence classification. 
-Please refer to the [Data Challenge paper](https://arxiv.org/pdf/2104.09423.pdf) for a more extensive literature review and discussion of relevant use cases.
+Please refer to the [Data Challenge paper](https://arxiv.org/abs/2104.09423) for a more extensive literature review and discussion of relevant use cases.
 
 #### Evaluation
 
