@@ -30,6 +30,14 @@ def upload_submission(
         local_file: str,
         task: str
 ):
+    """
+    Thanks to Alex Egg for catching the bug!
+
+    :param local_file: local path, may be only the file name or a full path
+    :param task: rec or cart
+    :return:
+    """
+
     print("Starting submission at {}...\n".format(datetime.utcnow()))
     # instantiate boto3 client
     s3_client = boto3.client(
@@ -38,8 +46,9 @@ def upload_submission(
         aws_secret_access_key=AWS_SECRET_KEY,
         region_name='us-west-2'
     )
+    s3_file_name = os.path.basename(local_file)
     # prepare s3 path according to the spec
-    s3_file_path = '{}/{}/{}'.format(task, PARTICIPANT_ID, local_file)  # it needs to be like e.g. "rec/id/*.json"
+    s3_file_path = '{}/{}/{}'.format(task, PARTICIPANT_ID, s3_file_name)  # it needs to be like e.g. "rec/id/*.json"
     # upload file
     s3_client.upload_file(local_file, BUCKET_NAME, s3_file_path)
     # say bye
