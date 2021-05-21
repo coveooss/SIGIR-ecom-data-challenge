@@ -16,12 +16,12 @@ import gensim
 from random import choice, shuffle
 from uploader import upload_submission
 
-
+import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
-import numpy as np
+
 
 
 # load envs from env file

@@ -1,3 +1,5 @@
 boto3==1.15.8
 python-dotenv==0.13.0
 gensim==4.0.1
+tensorflow==2.5.0
+scikit-learn==0.24.2
