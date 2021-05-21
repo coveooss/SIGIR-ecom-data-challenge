@@ -283,10 +283,16 @@ and `rec_test_phase_1.json` in the same folder, it will produce a local `json` f
 "next prediction event" evaluation: if you then run  `submission/uploader.py` with the appropriate `LOCAL_NAME` and
 `env` variables, you will have a valid (albeit far from perfect!) submission.
 
-The model is provided as an additional example for the submission process (and perhaps, as an easy baseline) 
-and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the script does not perform
- the necessary checks on timestamp ordering (or any other consistency check). 
- 
+Similar to the knn model, `submission/cart_example.py` is a simple LSTM-based model that performs binary classification 
+of shopping sequences for the 'cart-abandonment' task. If you run the script with `browsing_train.csv`
+and `intention_test_phase_1.json` in the same folder, it will produce a local `json` file with labels valid for the
+"cart abandonment" evaluation.
+
+These models are provided as additional examples for the submission process (and perhaps, as an easy baseline) 
+and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the scripts
+`submission/p2vec_knn_example.py` and `submission/cart_example.py` do not perform the necessary checks on timestamp ordering (or any other consistency check). 
+
+
 #### Local test set: tips for a local setup
 In the `rec` task, the test file reveals, for each test case, only a starting portion of the session and asks the model
 to predict the remaining interactions. The file was prepared by, first, generating the possible splits, given a 
@@ -301,12 +307,12 @@ second case contains the answer to the first one (`e_2`). The final test file, u
 therefore includes only _one_ among the possible splits, for a given session in the testing time window: if you are building a local
 test set by reserving the last few days in the training file for a local evaluation, keep this in mind!
 
+
 Finally, please note that the data reflects real-world user behavior: in many cases, the first few events of a session
 (including of course test sessions!) may _not_ include any product interaction, but just `page_view` or search events:
 a model that performs well in the real-world (and in the submission file) is a model that can predict interactions also
 leveraging past non-interaction events.
 
- 
 ### Baselines
 
 We adapted the code from [session-rec](https://github.com/rn5l/session-rec) repository, and share in the `baselines`
