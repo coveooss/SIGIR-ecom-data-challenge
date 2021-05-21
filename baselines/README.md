@@ -17,15 +17,15 @@ To run _session-rec_ on our dataset, we distinguish three phases:
 First, go into the `baselines` directory as the root directory. 
 
 * replace the sample files in `session_rec_sigir_data/train` with the actual dataset. These files will be transformed to become _session-rec_ training dataset;
-* replace `rec_test_sample.json` in `session_rec_sigir_data/train` with the test cases you want the model to predict (note: this should be the same `json` format as the one for the Data Challenge);
+* replace `rec_test_sample.json` in `session_rec_sigir_data/test` with the test cases you want the model to predict (note: this should be the same `json` format as the one for the Data Challenge);
 * run the `create_session_rec_input.py` script (you can modify the `train_ratio` in `create_session_rec_input.py`, to use a larger/smaller ratio of the training data for session_rec);
 
 At the end of the script, a `prepared` folder will be created into your `session_rec_sigir_data` folder, containing the data in the requested format to run the model.
 
 #### Run the Model
 
-First, get the model code by cloning the repo `https://github.com/rn5l/session-rec` ([paper](https://arxiv.org/pdf/2011.03424.pdf)); 
-make sure to install install the requirements. Now you are ready to run the model on the previously prepared data: 
+First, get the model code by cloning the repo `https://github.com/rn5l/session-rec` ([paper](https://arxiv.org/pdf/2011.03424.pdf)), that is compatible with Python 3.8 and below. 
+Make sure to install the requirements. You might need to install the packages listed in `requirements_conda.txt` even if you do not use Conda. Now you are ready to run the model on the previously prepared data: 
 
 * copy+paste the `session_rec_sigir_data` folder (from the previous section) inside the `data` folder;
 * copy+paste our `example_sigir.yml` inside the `conf` folder;

@@ -2,19 +2,24 @@
 _Public Data Release 1.0.0_
 
 ### Overview
-Coveo will host the 2021 [SIGIR eCom](https://sigir-ecom.github.io/data-task.html) Data Challenge and this repository will contain utility 
-scripts and information about data preparation and testing for the Challenge.
+Coveo hosts the 2021 [SIGIR eCom](https://sigir-ecom.github.io/data-task.html) Data Challenge and this repository contains utility 
+scripts and information about data preparation and testing for the Challenge: the paper introducing the Challenge 
+is available as a draft on [arxiv](https://arxiv.org/abs/2104.09423).
 
 Since the dataset is released to the community for research use even outside of the Data Challenge, 
 if you are using the dataset for independent research you can skip the details about evaluation in this README.
+
+_Note: there has been some issues when downloading the file using Safari; we suggest you use Chrome for the download and sign-up
+process._
 
 This page is continuously updated: come back often to check for updates on the Data Challenge.
 
 ### License
 
-The dataset is available for research and educational purposes at [this page](https://www.coveo.com/en/ailabs/sigir-ecom-data-challenge). To obtain the dataset, you are required to fill a form with information about you and your institution, 
+The dataset is available for research and educational purposes at [this page](https://www.coveo.com/en/ailabs/sigir-ecom-data-challenge). To obtain the dataset, 
+you are required to fill a form with information about you and your institution, 
 and agree to the Terms And Conditions for fair usage of the data. For convenience, Terms And Conditions are also included in a pure `txt` format in this repo: 
-usage of the data implies the acceptance of these Terms And Conditions. 
+usage of the data implies the acceptance of these Terms And Conditions.
 
 If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github.io/data-task.html), you are _required to release your code under an open source license_.
 
@@ -23,7 +28,7 @@ If you submit to the 2021 Data Challenge [leaderboard](https://sigir-ecom.github
 #### Data Description
 
 The dataset is provided as three big text files (`.csv`) - `browsing_train.csv`, `search_train.csv`, `sku_to_content.csv` - inside a `zip` archive containing an additional copy of the _Terms And Conditions_. The final dataset contains 36M events, and it is the first dataset of this
-kind to be released to the research community: please review the Data Challenge paper (WIP) for a comparison with 
+kind to be released to the research community: please review the [Data Challenge paper](https://arxiv.org/abs/2104.09423) for a comparison with 
 existing datasets and for the motivations behind the release format. For your convenience, three sample files 
 are included in the `start` folder, showcasing the data structure. 
 Below, you will find a detailed description for each file.
@@ -107,7 +112,7 @@ The SIGIR Data Challenge will welcome submissions on two separate use cases:
 For the recommendation task, there is recent literature on [both](https://arxiv.org/pdf/2009.10002.pdf) [modelling](https://arxiv.org/pdf/2012.09807.pdf) and [empirical analyses](https://arxiv.org/pdf/1910.12781.pdf); 
 for the cart-abandonment task, "[Shopper intent prediction from clickstream e‑commerce data with minimal browsing information](https://rdcu.be/b8oqN)" 
 is a good overview of clickstream prediction in eCommerce, and provides extensive benchmarks on neural architectures for sequence classification. 
-Please refer to the Data Challenge paper for a more extensive literature review and discussion of relevant use cases.
+Please refer to the [Data Challenge paper](https://arxiv.org/abs/2104.09423) for a more extensive literature review and discussion of relevant use cases.
 
 #### Evaluation
 
@@ -215,9 +220,8 @@ For the `rec` task, `label` is expected to be a list of hashed product SKU, as i
   }
 ```
 
-
-For the `cart` task, `label` is expected to be an integer (either 1 or 0), indicating if the session with the add-to-cart
-event will convert into a purchase:
+For the `cart` task, `label` is expected to be an integer, 
+indicating if the session with the add-to-cart event will convert into a purchase (1) or not (0):
 
 ```
 {
@@ -243,7 +247,10 @@ The file name should have the following format:
 
 `{}_1616887274000.json'.format(EMAIL.replace('@', '_'))`
 
-that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in milliseconds, joined by a `_`.
+that is, the sign-up e-mail (with `@` replaced by `_`) and epoch time in milliseconds, joined by a `_`. For example,
+a submission for someone having `jtagliabue@coveo.com` as e-mail would look like:
+
+`jtagliabue_coveo.com_1616887274000.json`
 
 The S3 path structure should have the following format:
 
@@ -251,7 +258,7 @@ The S3 path structure should have the following format:
 
 that is, the task (`rec` or `cart`), the user id you were provided
 with at the sign-up, and the actual `json` file, named according to the rules above. For your convenience,
-we provide you with a read-made script that given a local submission file, proceed with the upload to the
+we provide you with a ready-made script that given a local submission file, performs the upload to the
 Challenge bucket (see below).
 
 ##### Submission upload
@@ -260,8 +267,9 @@ Once ready to be submitted, your test file needs to be uploaded to the S3 bucket
 correct credentials, user id and file structure (see above). 
 
 For your convenience, the script `submission/uploader.py` in this repository can be used to upload your 
-json to the correct bucket: make sure you have an `upload.env` file in the folder, filled the information 
-contained in your sign-up e-mail. Once you change the `LOCAL_FILE` in `submission/uploader.py`
+json to the correct bucket: make sure to duplicate the `.env.local` file as an `.env` file in this folder, 
+and fill it with the information contained in your sign-up e-mail (or alternatively, set up the 
+corresponding environment variables). Once you change the `LOCAL_FILE` in `submission/uploader.py`
 to the name of the current submission file, running the script from your command line should produce a
 successful submission; after metrics calculation, you will also receive an e-mail acknowledging
 the submission and reporting the scores.
@@ -291,7 +299,7 @@ folder what is necessary to shape the dataset and run the baseline model, which 
 
 ### Acknowledgments
 The SIGIR Data Challenge is a collaboration between industry and academia, over a dataset gently provided by Coveo.
-The authors of the paper are:
+The authors of the paper and organizers are:
 
 * [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/) - Coveo AI Labs
 * [Ciro Greco](https://www.linkedin.com/in/cirogreco/) - Coveo AI Labs
@@ -299,10 +307,10 @@ The authors of the paper are:
 * [Federico Bianchi](https://www.linkedin.com/in/federico-bianchi-3b7998121/) - Postdoctoral Researcher at Università Bocconi
 * [Giovanni Cassani](https://giovannicassani.github.io/) - Tillburg University
 * [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
+* [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) - Coveo
 
 The authors wish to thank Richard Tessier and the entire Coveo's legal team, for supporting our research and believing in 
-this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) 
-and [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) for help in data collection and preparation.
+this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) for help in data collection and preparation.
 
 ### How to Cite our Work
 
@@ -310,7 +318,7 @@ If you use this dataset, please cite our work:
 
 ```
 @inproceedings{CoveoSIGIR2021,
-author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing},
+author = {Tagliabue, Jacopo and Greco, Ciro and Roy, Jean-Francis and Bianchi, Federico and Cassani, Giovanni and Yu, Bingqing and Chia, Patrick John},
 title = {SIGIR 2021 E-Commerce Workshop Data Challenge},
 year = {2021},
 booktitle = {SIGIR eCom 2021}

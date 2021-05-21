@@ -44,12 +44,12 @@ def train_product_2_vec_model(sessions: list,
     """
     model =  gensim.models.Word2Vec(sentences=sessions,
                                     min_count=min_c,
-                                    size=size,
+                                    vector_size=size,
                                     window=window,
-                                    iter=iterations,
+                                    epochs=iterations,
                                     ns_exponent=ns_exponent)
 
-    print("# products in the space: {}".format(len(model.wv.vocab)))
+    print("# products in the space: {}".format(len(model.wv.index_to_key)))
 
     return model.wv
 
@@ -92,7 +92,8 @@ def make_predictions(prod2vec_model, test_file: str):
     cnt_preds = 0
     my_predictions = []
     # get all possible SKUs in the model, as a back-up choice
-    all_skus = list(prod2vec_model.vocab)
+    all_skus = list(prod2vec_model.index_to_key)
+    print("Same SKUS.. {}".format(all_skus[:2]))
     with open(test_file) as json_file:
         # read the test cases from the provided file
         test_queries = json.load(json_file)
