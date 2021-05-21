@@ -283,9 +283,15 @@ and `rec_test_phase_1.json` in the same folder, it will produce a local `json` f
 "next prediction event" evaluation: if you then run  `submission/uploader.py` with the appropriate `LOCAL_NAME` and
 `env` variables, you will have a valid (albeit far from perfect!) submission.
 
-The model is provided as an additional example for the submission process (and perhaps, as an easy baseline) 
-and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the script does not perform
- the necessary checks on timestamp ordering (or any other consistency check). 
+Similar to the knn model, `submission/cart_example.py` is a simple LSTM-based model that performs binary classification 
+of shopping sequences for the 'cart-abandonment' task. If you run the script with `browsing_train.csv`
+and `intention_test_phase_1.json` in the same folder, it will produce a local `json` file with labels valid for the
+"cart abandonment" evaluation.
+
+These models are provided as additional examples for the submission process (and perhaps, as an easy baseline) 
+and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the script
+`submission/p2vec_knn_example.py` does not perform  the necessary checks on timestamp ordering
+(or any other consistency check). 
 
 ### Baselines
 
