@@ -1,6 +1,6 @@
 """
 
-    Sample script running e-2-e a prod2vec + LSTM model for cart task, including automatically submitting the
+    Sample script running e-2-e a LSTM model for cart task, including automatically submitting the
     local prediction file to AWS. This is just a sample script provided for your convenience, but it should not
     be treated as a credible baseline.
 
