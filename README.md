@@ -286,7 +286,12 @@ and `rec_test_phase_1.json` in the same folder, it will produce a local `json` f
 Similar to the knn model, `submission/cart_example.py` is a simple LSTM-based model that performs binary classification 
 of shopping sequences for the 'cart-abandonment' task. If you run the script with `browsing_train.csv`
 and `intention_test_phase_1.json` in the same folder, it will produce a local `json` file with labels valid for the
-"cart abandonment" evaluation.
+"cart abandonment" evaluation. 
+
+In addition, we have included in `submission/cart_example.py`, a sample use case of [Weights & Biases](https://wandb.ai/site)
+for experiment tracking. Note that the file assumes that you have installed wandb (see `requirements.txt`), 
+[signed-up](https://app.wandb.ai/login?signup=true) with Weights & Biases and placed a valid `WANDB_API_KEY` in your environment file `upload.env`. 
+Please refer to [wandb documentation](https://docs.wandb.ai/quickstart) for further details and advanced use cases.
 
 These models are provided as additional examples for the submission process (and perhaps, as an easy baseline) 
 and it is not intended to be in any way a suggestion on how to tackle the Challenge: for example, the scripts

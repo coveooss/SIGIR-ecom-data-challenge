@@ -21,11 +21,17 @@ import tensorflow as tf
 import tensorflow.keras as keras
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
-
+import wandb
+from wandb.keras import WandbCallback
 
 
 # load envs from env file
 load_dotenv(verbose=True, dotenv_path='upload.env')
+
+# Log In to wandb
+# NB : This assumes you have a valid wandb api key stored as WANDB_API_KEY in upload.env
+# You may remove/comment out the below line if you do not wish to use wandb
+wandb.login()
 
 
 # read envs from file
@@ -134,6 +140,17 @@ def train_lstm_model(x, y,
     :param lr: learning rate
     :return:
     """
+
+    # If you do no want to use wandb, you may comment out wandb_config and wandb.init
+    # Here store a dictionary of some parameters we may want to track with wandb
+    wandb_config = {'epochs' : epochs, 'patience': patience, 'lr' : lr, "lstm_dim": lstm_dim, 'batch_size' : 128}
+    # Initialization for a run in wandb
+    wandb.init(project="cart-abandonment",
+               config=wandb_config,
+               id=wandb.util.generate_id())
+
+
+
     X_train, X_test, y_train, y_test = train_test_split(x,y)
     # pad sequences
     max_len = max(len(_) for _ in x)
@@ -163,6 +180,9 @@ def train_lstm_model(x, y,
                                        verbose=1,
                                        restore_best_weights=True)
 
+    # wandb includes callbacks for various deep learning libraries like Keras
+    # NB: If you do not want to use wandb, remove WandbCallback from list
+    callbacks = [es, WandbCallback()]
     model.compile(optimizer=opt,
                   loss=loss,
                   metrics=['accuracy'])
@@ -172,7 +192,7 @@ def train_lstm_model(x, y,
               validation_data=(X_test,y_test),
               batch_size=batch_size,
               epochs=epochs,
-              callbacks=[es])
+              callbacks=callbacks)
 
     # return trained model
     return model
