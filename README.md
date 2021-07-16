@@ -3,13 +3,16 @@ _Public Data Release 1.0.0_
 
 ### Overview
 Coveo hosted the [2021 SIGIR eCom](https://sigir-ecom.github.io) Data Challenge 
-and this repository contains data and utility scripts for the dataset, which is freely
-available for research purposes (see below):  the paper introducing the Challenge is [available](https://arxiv.org/abs/2104.09423) as 
+and this repository contains utility scripts and the dataset, which is freely
+available for research purposes (see below): the paper introducing the Challenge is [available](https://arxiv.org/abs/2104.09423) as 
 a pre-print. 
 
 The Data Challenge 
-original README, containing submission information and the final leadearboard, 
-is still archived in this repository as `README_DC_2021.md`.
+original README (containing baseline information, design papers, solutions, etc.)
+is archived in this repository as `README_DC_2021.md`. Background information 
+about the Challenge, the motivations behind the release and some inspiring submissions
+ can be found in the original [paper](https://arxiv.org/abs/2104.09423), the archival section in `README_DC_2021.md`
+ and the SIGIR [presentation](https://drive.google.com/file/d/1O0BSAhgJFzx1ddeExxAEGnP_836AftNT/view).
 
 _Note: there has been some issues when downloading the file using Safari; 
 we suggest you to use Chrome for the download and sign-up process._
@@ -66,7 +69,7 @@ Field | Type | Description
 ------------ | ------------- | -------------
 session_id_hash | string | Hashed identifier of the shopping session. A session groups together events that are at most 30 minutes apart: if the same user comes back to the target website after 31 minutes from the last interaction, a new session identifier is assigned.
 server_timestamp_epoch_ms | int | Epoch time, in milliseconds. As a further anonymization technique, the timestamp has been shifted by an unspecified amount of weeks, keeping intact the intra-week patterns.
-query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques. Please note that this representation is compatible with the one in the catalog file.
+query_vector | vector | A dense representation of the search query, obtained through standard pre-trained modeling and dimensionality reduction techniques.
 product_skus_hash | list | Hashed identifiers of the products in the search response.
 clicked_skus_hash | list | Hashed identifiers of the products clicked after issuing the search query.
 
@@ -112,7 +115,7 @@ The authors of the paper and organizers are:
 * [Bingqing Yu](https://www.linkedin.com/in/bingqing-christine-yu/) - Coveo
 * [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) - Coveo
 
-The authors wish to the entire Coveo's legal team, for supporting our research and believing in 
+The authors wish to thank the entire Coveo's legal team, for supporting our research and believing in 
 this data sharing initiative; special thanks to [Luca Bigon](https://www.linkedin.com/in/bigluck/) 
 for help in data collection and preparation.
 

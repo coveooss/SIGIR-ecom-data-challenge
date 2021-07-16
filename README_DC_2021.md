@@ -16,10 +16,7 @@ please reach out to [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliab
 ### Results
 
 The Data Challenge ran from April 21st to June 17th: it featured hundreds of downloads, 
-more than 20 teams actively competing and 6 final design papers. 
-
-
-On July 15th, 2021, the results were [presented](https://drive.google.com/file/d/1O0BSAhgJFzx1ddeExxAEGnP_836AftNT/view)
+more than 20 teams actively competing and 6 final design papers. On July 15th, 2021, the results were [presented](https://drive.google.com/file/d/1O0BSAhgJFzx1ddeExxAEGnP_836AftNT/view)
 during SIGIR eCom, featuring an invited talk from the [NVIDIA team](https://medium.com/nvidia-merlin/winning-the-sigir-ecommerce-challenge-on-session-based-recommendation-with-transformers-v2-793f6fac2994)
 and a round table with several teams involved.
 
@@ -34,16 +31,37 @@ the evaluation procedure, please see the sections below; don't forget to check o
 the DC [paper](https://arxiv.org/abs/2104.09423) and [presentation](https://drive.google.com/file/d/1O0BSAhgJFzx1ddeExxAEGnP_836AftNT/view) 
 for context on the use cases and the metrics chosen.
 
-*NEXT ITEM PREDICTION*
+##### `recs`: next item prediction
 
 Position | Team | Score
 ------------ | ------------- | -------------
-
 1 | DeepBlueAI | 0.277256856863352
 2 | NVIDIA Merlin | 0.277150722994993
 3 | tsotfsk | 0.26171723662781
 4 | scitator | 0.228414620791257
 5 | louis | 0.223834529799278
+
+##### `recs`: subsequent items prediction
+
+Position | Team | Score
+------------ | ------------- | -------------
+1 | NVIDIA Merlin | 0.0744066480874766
+2 | Yoshi | 0.071323143782563
+3 | DeepBlueAI | 0.0712670036197682
+4 | louis | 0.0691723442031248
+5 | tsotfsk | 0.0676956513778051
+
+##### `cart`: purchase intent prediction
+
+Position | Team | Score
+------------ | ------------- | -------------
+1 | DeepBlueAI | 3.63439774529335
+2 | NVIDIA Merlin | 3.6340530847665
+3 | hakubishin3 | 3.63031595108722
+4 | Shawn | 3.63006620083747
+5 | Yoshi | 3.5829108962637
+
+
 
 #### Repositories
 
