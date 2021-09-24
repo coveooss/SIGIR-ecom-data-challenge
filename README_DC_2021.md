@@ -38,7 +38,7 @@ Position | Team | Score
 1 | DeepBlueAI | 0.277256856863352
 2 | NVIDIA Merlin | 0.277150722994993
 3 | tsotfsk | 0.26171723662781
-4 | scitator | 0.228414620791257
+4 | scitator (Tinkoff.AI) | 0.228414620791257
 5 | louis | 0.223834529799278
 
 ##### `recs`: subsequent items prediction
@@ -70,6 +70,7 @@ If you want to replicate the Data Challenge submissions, open source code from t
 * [DeepBlueAI](https://github.com/DeepBlueAI/SIGIR_eCOM_2021_Data_Challenge_1st_Place)
 * [louis](https://github.com/louislung/sigir2021challenge)
 * [NVIDIA Merlin](https://github.com/NVIDIA-Merlin/competitions/tree/main/SIGIR_eCommerce_Challenge_2021)
+* [Tinkoff.AI](https://github.com/tinkoff-ai/sigir-2021)
 
 
 #### Design Papers
