@@ -1,3 +1,9 @@
+<!--
+Do not archive this repository.
+A published paper references it: https://arxiv.org/abs/2104.09423 (about 50 citations, still cited in 2026:
+https://scholar.google.ca/scholar?cites=4009018541282685006). Researchers keep using this repository to get the dataset.
+It was archived by mistake in PES-4285 (https://coveord.atlassian.net/browse/PES-4285) and restored.
+-->
 # SIGIR eCOM 2021 Data Challenge Dataset
 _Public Data Release 1.0.0_
 
